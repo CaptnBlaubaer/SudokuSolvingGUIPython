@@ -1,4 +1,5 @@
 import tkinter as tk
+from datetime import datetime
 from helperFunctions import packInSquare
 
 class GUI:
@@ -79,10 +80,13 @@ class EventHandler:
         logic = Logic(self.__entries)
         #removes old entries (otherwise the new entry would be added to the old one)
         self.gui.deleteGrid()
-        #assign each entry field the solved value
+        #measures time before and after solving function call 
+        before = datetime.now()
         self.gui.setGrid(logic.solveSudoku())
-        #Label shows numb of interations
-        self.gui.label.config(text= f"Iterations: {logic.iterationCounter}")
+        after = datetime.now()
+        calculationDuration = after- before
+        #Label shows numb of interations and time 
+        self.gui.label.config(text= f"Iterations: {logic.iterationCounter}, Duration: {calculationDuration.total_seconds()} seconds")
 
 class Logic:
     #init of Logic class generates two list both containing

@@ -1,4 +1,5 @@
 import tkinter as tk
+import datetime
 from applicationParts import GUI, EventHandler
 
 window = tk.Tk()
